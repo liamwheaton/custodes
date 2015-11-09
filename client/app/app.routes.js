@@ -12,4 +12,9 @@ angular.module('app.routes')
 		.otherwise({
 			redirectTo: '/'
 		})
+
+		.when('/map', {
+			controller: 'mainCtrl',
+			templateUrl: 'views/test.html'
+		});
 });

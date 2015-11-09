@@ -1,11 +1,3 @@
-# Angular Boilerplate
+# Custodes
+> An Angular application to track police movement in realtime. Built on ABP by Nick Sheffield
 
-> An Angular website starting point. Has all the infrastructure needed to rapidly build an application.
-
----
-
-To set up, run the following:
-
-```
-npm install
-```

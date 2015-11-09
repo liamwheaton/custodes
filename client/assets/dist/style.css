@@ -1,0 +1,27 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin: 0;
+    color: #ff6347;
+}
+
+p,
+li {
+    line-height: 1.5;
+}
+
+h1 {
+    font-size: 3em;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1000px;
+    padding: 0 1em;
+}
+
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInN0eWxlLnN0eWwiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDQyxZQUFXLFdBQVg7O0FBRUQ7RUFDQyxhQUE0QiwrQ0FBNUI7RUFDQSxRQUFPLEVBQVA7RUFDQSxPQUFNLFFBQU47O0FBRUQ7QUFBRztFQUNGLGFBQVksSUFBWjs7QUFFRDtFQUNDLFdBQVUsSUFBVjs7QUFFRDtFQUNDLFFBQU8sT0FBUDtFQUNBLFdBQVUsT0FBVjtFQUNBLFNBQVEsTUFBUiIsImZpbGUiOiJzdHlsZS5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIqXG5cdGJveC1zaXppbmcgYm9yZGVyLWJveFxuXG5ib2R5XG5cdGZvbnQtZmFtaWx5ICdIZWx2ZXRpY2EgTmV1ZScsIEhlbHZldGljYSwgQXJpYWwsIHNhbnMtc2VyaWZcblx0bWFyZ2luIDBcblx0Y29sb3IgdG9tYXRvXG5cbnAsIGxpXG5cdGxpbmUtaGVpZ2h0IDEuNVxuXHRcbmgxXG5cdGZvbnQtc2l6ZSAzZW1cblx0XG4uY29udGFpbmVyXG5cdG1hcmdpbiAwIGF1dG9cblx0bWF4LXdpZHRoIDEwMDBweFxuXHRwYWRkaW5nIDAgMWVtXG4iXSwic291cmNlUm9vdCI6Ii9zb3VyY2UvIn0= */
