@@ -4,12 +4,16 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
 
+var config = require('./config');
+
+mongoose.connect(config.mongoUri);
 
 var app = express();
 
 // uncomment after placing your favicon in /img
-//app.use(favicon(path.join(__dirname, '../client/assets/img/', 'favicon.ico')));
+// app.use(favicon(path.join(__dirname, '../client/assets/img/', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

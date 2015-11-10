@@ -5,16 +5,18 @@ angular.module('app.routes')
 	$routeProvider
 	
 		.when('/', {
-			controller: 'mainCtrl',
-			templateUrl: 'views/example.html'
-		})
-		
-		.otherwise({
-			redirectTo: '/'
+			controller: 'loginCtrl',
+			templateUrl: 'views/landing.html'
 		})
 
 		.when('/map', {
-			controller: 'mainCtrl',
-			templateUrl: 'views/test.html'
+			controller: 'mapCtrl',
+			templateUrl: 'views/map.html'
+		})
+
+		.otherwise({
+			redirectTo: '/'
 		});
+
+
 });

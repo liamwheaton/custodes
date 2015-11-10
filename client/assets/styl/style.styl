@@ -1,18 +1,79 @@
+@import 'variables.styl'
+
+
+// General
+
 *
 	box-sizing border-box
 
-body
-	font-family 'Helvetica Neue', Helvetica, Arial, sans-serif
+body 
+	font-family main
 	margin 0
-	color tomato
+	color light-grey
 
 p, li
 	line-height 1.5
 	
-h1
-	font-size 3em
+.shell
+	height 100vh
 	
-.container
-	margin 0 auto
-	max-width 1000px
-	padding 0 1em
+	// Landing view
+
+	.container
+		margin 0 auto
+		max-width 100%
+		min-height 100%
+		background dark-grey
+			
+		.wrapper
+			margin 0 auto 20px auto
+			width 300px
+			padding 20px 20px 0 20px
+			
+			svg
+				max-width 260px
+				margin-top 1em
+				
+			.form-login
+				text-align center
+				margin-top 3em
+				
+				.form-row
+					margin-bottom 10px
+					
+					input
+						text-align center
+						background-color light-grey
+						border-radius 3px
+						font-size 1em
+						padding 10px 0
+						width 250px
+						
+				.btn
+					background red
+					color light-grey
+					font-size 1em
+					line-height 25px
+					padding 10px 0
+					text-decoration none
+					border-radius 3px
+					box-shadow none
+					display block
+					width 250px
+					margin 0 auto 5em auto
+					
+				.login-link
+					text-decoration none
+					font-size 1em
+					color light-grey
+					display block
+					margin-top 1em
+					
+	// Map view
+	
+	#map
+		width 100%
+		height 100%
+
+					
+				
