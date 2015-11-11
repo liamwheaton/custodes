@@ -5,8 +5,18 @@ angular.module('app.routes')
 	$routeProvider
 	
 		.when('/', {
-			controller: 'loginCtrl',
+			controller: 'landingCtrl',
 			templateUrl: 'views/landing.html'
+		})
+
+		.when('/login', {
+			controller: 'loginCtrl',
+			templateUrl: 'views/login.html'
+		})
+
+		.when('/register', {
+			controller: 'regCtrl',
+			templateUrl: 'views/register.html'
 		})
 
 		.when('/map', {
