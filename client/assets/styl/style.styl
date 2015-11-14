@@ -175,13 +175,36 @@ p, li
 			
 		#drawer-toggle
 			flex 1
-			font-size 2em
-			color light-grey
-			background transparent
 			text-align right
+			background transparent
 			padding-right 10px
 			border none
 			outline none
+			
+			#burgericon
+				cursor pointer	
+					
+				.frstbar
+					transition all 0.1s linear
+					transform rotate(0deg)
+					transform-origin 1% 48%
+					&.open
+						transform rotate(45deg)
+				
+				.thrdbar
+					transition all 0.1s linear
+					transform rotate(0deg)
+					transform-origin 1% 48%
+					&.open
+						transform rotate(-45deg)
+					
+				.scndbar
+					transition all 0.1s linear
+					transform rotate(0deg)
+					transform-origin 1% 48%
+					&.open
+						width 0
+						opacity 0
 			
 	.open
 		position absolute
