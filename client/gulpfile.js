@@ -76,7 +76,7 @@ gulp.task('css', function(){
 	var stream = gulp.src(paths.stylus.main)                // grab our stylus file
 		.pipe(plumber(plumberOpts))                         // notify us if any errors appear
 		.pipe(sourcemap.init())                             // get ready to write a sourcemap
-		.pipe(stylus())                                     // turn the stylus into css
+		.pipe(stylus())                                    // turn the stylus into css
 		.pipe(combinemq())                                  // put all the media queries at the bottom
 		.pipe(sourcemap.write())                            // write the sourcemap
 		.pipe(autoprefix('last 2 versions'))                // autoprefix the css code

@@ -1,9 +1,8 @@
 {
-  "name": "apb",
+  "name": "custodes",
   "version": "0.0.0",
-  "homepage": "https://github.com/nicksheffield/apb",
   "authors": [
-    "Nick Sheffield <numbereft@gmail.com>"
+    "Liam Wheaton <liam.wheaton@gmail.com>"
   ],
   "license": "MIT",
   "ignore": [
@@ -20,6 +19,7 @@
     "angular-route": "~1.4.7",
     "angular-resource": "~1.4.1",
     "angular-sanitize": "~1.4.1",
-    "angular-ui-map": "~0.5.0"
+    "angular-ui-map": "~0.5.0",
+    "angular-drawer": "~0.0.1"
   }
 }

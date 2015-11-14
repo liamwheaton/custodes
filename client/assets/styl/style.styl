@@ -18,7 +18,7 @@ p, li
 	
 	// Landing view
 
-	.container
+	.landing-view
 		display flex
 		flex-direction column
 		justify-content space-between
@@ -33,7 +33,7 @@ p, li
 			padding 20px 20px 0 20px
 			
 			.logo
-				margin 0 auto 2em auto
+				margin 0 auto 
 				max-width 80px	
 				
 			svg
@@ -43,6 +43,7 @@ p, li
 				background red
 				color light-grey
 				font-size 1em
+				font-weight bold
 				line-height 25px
 				padding 10px 0
 				text-decoration none
@@ -52,30 +53,6 @@ p, li
 				width 250px
 				margin 1em auto 0 auto
 				border none
-				
-			// Login view & Register view
-				
-			.form-login
-				text-align center
-				margin-top 3em
-				
-				.form-row
-					margin-bottom 10px
-					
-					input
-						text-align center
-						background-color light-grey
-						border-radius 3px
-						font-size 1em
-						padding 10px 0
-						width 250px
-						
-			.link
-				text-decoration none
-				font-size 1em
-				color light-grey
-				display block
-				margin-top 1em
 				
 	footer
 		width 100%
@@ -90,41 +67,168 @@ p, li
 			.fa
 				font-size 2.5em
 				color light-grey
+				
+	// Forms: Login view/Register view
 	
+	.form-view
+		display flex
+		flex-direction column
+		justify-content space-between
+		margin 0 auto
+		max-width 100%
+		min-height 100%
+		background dark-grey
+		
+		.custodes-logo
+			height 100px
+			
+		.content
+			height 450px
+			
+		.wrapper
+			margin 0 auto
+			width 300px
+			padding 20px 20px 0 20px
+			
+			.logo
+				margin 0 auto 2em auto
+				max-width 80px
+			
+			h1
+				text-align center
+				margin 0	
+				
+			.form-login
+				text-align center
+				margin-top 1em
+				
+				.form-row
+					margin-bottom 10px
+					
+					input
+						text-align center
+						background-color light-grey
+						border-radius 3px
+						font-size 1em
+						padding 10px 0
+						width 250px
+						
+				.terms
+					margin 20px 0
+					display flex
+					align-items center
+					
+					input[type="checkbox"]
+						width 25px
+						height 20px
+						margin-right 10px
+						
+					label
+						margin-right 5px
+					a
+						text-decoration none
+						color red
+						
+				.btn
+					background red
+					color light-grey
+					font-size 1em
+					font-weight 700
+					line-height 25px
+					padding 10px 0
+					text-decoration none
+					border-radius 3px
+					box-shadow none
+					display block
+					width 250px
+					margin 1em auto 0 auto
+					border none	
+					
+				.link
+					text-decoration none
+					font-size 1em
+					color red
+					display block
+					margin-top 1em
 					
 	// Map view
 		
 	.bar
+		display flex
 		position absolute
 		width 100%
 		height 50px
 		background dark-grey
 		z-index 999999
 		box-shadow rest
-		// display flex
-		// justify-content space-between
+		
 		div
-			display inline-block
-			position relative
-			top 10
-			left 10
-			max-width 40px
-			height 40px
-			z-index 9999999
+			flex 1
+			
+			svg
+				padding 5px 0 0 5px
+				max-width 40px
 		h3
-			display inline-block
+			flex 1
 			margin-top 0.7em
-		a
-			display inline-block
+			text-align center
+			
+		#drawer-toggle
+			flex 1
 			font-size 2em
 			color light-grey
-			position relative
-			top 10
-			right 100
-			// margin-before auto
-			// margin-after auto
-			// margin-right 10px
+			background transparent
+			text-align right
+			padding-right 10px
+			border none
+			outline none
+			
+	.open
+		position absolute
+		top 0
+		left 0
 		
+	.close
+		position absolute
+		top 0
+		left -300px	
+		
+	#drawer
+		background light-grey
+		color dark-grey
+		width 300px
+		height 100%
+		box-shadow active1
+		padding 70px 20px 0 20px
+		transition all 0.1s ease-in-out
+		display flex
+		flex-direction column
+		justify-content space-between
+		
+		h1
+			margin-bottom 0
+			font-size 1.2em
+		
+		.profile
+			height 450px
+			
+			li
+				list-style none
+				font-weight bold
+				line-height 2
+				font-size 1.2em
+		
+		.controls
+			display flex
+			flex-direction column
+			a
+				color dark-grey
+				font-weight bold
+				font-size 1.2em
+				text-decoration none
+				margin-bottom 20px
+			
+						
 	#map
 		width 100%
 		height 100%
