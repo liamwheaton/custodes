@@ -4,6 +4,7 @@
 
 *
 	box-sizing border-box
+	
 
 body 
 	font-family main
@@ -12,6 +13,17 @@ body
 
 p, li
 	line-height 1.5
+
+
+.ng-enter.page-landing
+	animation slideInLeft 0.5s both ease-in
+.ng-leave.page-landing
+	animation slideOutLeft 0.5s both ease-in
+.ng-enter.page-login
+	animation slideInRight 0.51s both ease-in
+.ng-leave.page-login
+	animation slideOutRight 0.5s both ease-in
+	
 	
 .shell
 	height 100vh
@@ -44,6 +56,7 @@ p, li
 				color light-grey
 				font-size 1em
 				font-weight bold
+				text-align center
 				line-height 25px
 				padding 10px 0
 				text-decoration none
@@ -83,7 +96,7 @@ p, li
 			height 100px
 			
 		.content
-			height 450px
+			height 410px
 			
 		.wrapper
 			margin 0 auto
@@ -182,7 +195,6 @@ p, li
 			outline none
 			
 			#burgericon
-				cursor pointer	
 					
 				.frstbar
 					transition all 0.1s linear

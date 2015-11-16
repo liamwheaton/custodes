@@ -9,9 +9,9 @@ angular.module('app.views', []);
 angular.module('app', [
 
 	'ngRoute',
+	'ngAnimate',
 	'ngResource',
 	'ngSanitize',
-	// 'angular-drawer',
 
 	'app.controllers',
 	'app.directives',

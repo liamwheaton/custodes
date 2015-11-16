@@ -33,6 +33,7 @@ var paths = {
 		'bower_components/angular-route/angular-route.min.js',
 		'bower_components/angular-resource/angular-resource.min.js',
 		'bower_components/angular-sanitize/angular-sanitize.min.js',
+		'bower_components/angular-animate/angular-animate.min.js',
 		'bower_components/lodash/lodash.min.js'
 	],
 	output: 'assets/dist/'
@@ -64,6 +65,7 @@ gulp.task('angular', function() {
 
 gulp.task('libs', function() {
 	var stream = gulp.src(paths.libs)                       // grab all the libs
+		.pipe(order(['angular.min.js'])) 
 		.pipe(concat('libs.min.js'))                        // merge them all into the same file
 		.pipe(uglify())                                     // minify the code
 		.pipe(gulp.dest(paths.output))                      // save it into the dist folder

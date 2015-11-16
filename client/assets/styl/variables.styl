@@ -16,3 +16,36 @@ active1 = 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)
 active2 = 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)
 active3 = 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)
 
+// Page animation
+
+@keyframes slideInRight
+	from
+		transform translateX(50%)	
+		z-index 102	
+	to
+		transform translateX(0)
+		z-index 102	
+@keyframes slideOutRight
+	from
+		transform translateX(0)	
+		z-index 101
+	to
+		transform translateX(100%)	
+		z-index 101	
+@keyframes slideInLeft
+	from
+		transform translateX(-100%)	
+		z-index 102
+	to
+		transform translateX(0)
+		z-index 102	
+@keyframes slideOutLeft
+	from
+		transform translateX(0)
+		z-index 101	
+	to
+		transform translateX(-100%)
+		z-index 101
+
+		
+	
