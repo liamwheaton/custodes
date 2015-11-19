@@ -16,13 +16,29 @@ p, li
 
 
 .ng-enter.page-landing
-	animation slideInLeft 0.5s both ease-in
+	animation slideInLeft 0.1s both ease-out
+	position absolute
+	top 0
+	left 0
+	width 320px
 .ng-leave.page-landing
-	animation slideOutLeft 0.5s both ease-in
-.ng-enter.page-login
-	animation slideInRight 0.51s both ease-in
-.ng-leave.page-login
-	animation slideOutRight 0.5s both ease-in
+	animation slideOutLeft 0.1s both ease-out
+	position absolute
+	top 0
+	left 0
+	width 320px
+.ng-enter.page-login, .ng-enter.page-reg
+	animation slideInRight 0.1s both ease-out
+	position absolute
+	top 0
+	left 0
+	width 320px
+.ng-leave.page-login, .ng-leave.page-reg
+	animation slideOutRight 0.1s both ease-out
+	position absolute
+	top 0
+	left 0
+	width 320px
 	
 	
 .shell

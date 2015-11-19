@@ -10,7 +10,11 @@ var userSchema = new Schema({
 	created: {type: Date, default: Date.now}
 });
 
+// Store the schema in a variable
+
 var User = mongoose.model('User', userSchema);
+
+// In order to export from the model
 
 module.exports = {
 	User: User
