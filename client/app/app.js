@@ -7,12 +7,13 @@ angular.module('app.routes', []);
 angular.module('app.views', []);
 
 angular.module('app', [
-
+	
 	'ngRoute',
 	'ngAnimate',
 	'ngResource',
 	'ngSanitize',
-
+	'restangular',
+	
 	'app.controllers',
 	'app.directives',
 	'app.resources',

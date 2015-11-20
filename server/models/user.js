@@ -1,21 +1,17 @@
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
 
-var userSchema = new Schema({
-	username: String,
-	firstName: String,
-	lastName: String,
-	email: String,
-	password: String,
-	created: {type: Date, default: Date.now}
+// Create schema
+var UserSchema = new mongoose.Schema({
+	username: {
+		type: String,
+		required: true
+	},
+	password: {
+		type: String,
+		required: true
+	}
 });
 
-// Store the schema in a variable
+// Export schema
+module.exports = UserSchema;
 
-var User = mongoose.model('User', userSchema);
-
-// In order to export from the model
-
-module.exports = {
-	User: User
-};

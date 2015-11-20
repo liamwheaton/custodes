@@ -3,6 +3,7 @@ var gulp          = require('gulp')                         // the main guy
 var clone         = require('gulp-clone')                   // used to fork a stream
 var order         = require('gulp-order')                   // reorder files in stream
 var uglify        = require('gulp-uglify')                  // minify js
+var jsbeautify    = require('gulp-jsbeautify')				// js files human readable
 var stylus        = require('gulp-stylus')                  // turn stylus code into css
 var rename        = require('gulp-rename')                  // rename file
 var concat        = require('gulp-concat')                  // merge files together
@@ -34,7 +35,9 @@ var paths = {
 		'bower_components/angular-resource/angular-resource.min.js',
 		'bower_components/angular-sanitize/angular-sanitize.min.js',
 		'bower_components/angular-animate/angular-animate.min.js',
-		'bower_components/lodash/lodash.min.js'
+		'bower_components/lodash/lodash.min.js',
+		'bower_components/restangular/dist/restangular.min.js'
+		
 	],
 	output: 'assets/dist/'
 }
@@ -65,9 +68,17 @@ gulp.task('angular', function() {
 
 gulp.task('libs', function() {
 	var stream = gulp.src(paths.libs)                       // grab all the libs
-		.pipe(order(['angular.min.js'])) 
-		.pipe(concat('libs.min.js'))                        // merge them all into the same file
+		.pipe(order(['angular.min.js', 'lodash.min.js', 'restangular.min.js']))
+		.pipe(concat('libs.js'))                        // merge them all into the same file
+
+	stream.pipe(clone())
+		.pipe(jsbeautify())
+		.pipe(rename('libs.js'))
+		.pipe(gulp.dest(paths.output))
+
+	stream.pipe(clone())
 		.pipe(uglify())                                     // minify the code
+		.pipe(rename('libs.min.js'))
 		.pipe(gulp.dest(paths.output))                      // save it into the dist folder
 	
 	return stream

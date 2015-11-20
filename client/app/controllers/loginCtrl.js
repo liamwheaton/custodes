@@ -4,9 +4,15 @@ angular.module('app.controllers')
 
 	$scope.pageClass = 'page-login';
 
-	$http.get('/users').success(function(response){
-		console.log('data recieved');
-		$scope.users = response;
-	});
+	$scope.users = [
+	{
+		username: 'user1',
+		password: 'user1'
+	},
+	{
+		username: 'user2',
+		password: 'user2'
+	}
+	];
 
 });

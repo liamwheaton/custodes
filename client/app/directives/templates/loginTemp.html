@@ -1,6 +1,6 @@
 <div class="wrapper">
 
-	<form class="form-login" method="post" action="/auth">
+	<form class="form-login" method="post" action="/users/login">
 		<div class="form-row">
 			<input type="text" value="" placeholder="username" required>
 		</div>
@@ -14,5 +14,8 @@
 		
 	</form>
 	
+	<ul ng-repeat='user in users'>
+		<li>{{ user.username }}</li>
+	</ul>
 	
 </div>
