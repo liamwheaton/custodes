@@ -1,22 +1,22 @@
 <div class="wrapper">
 
-	<form class="form-login" method="post">
+	<form class="form-login">
 
 		<div class="form-row">
-			<input type="text" value="" placeholder="Username" required>
+			<input type="text" value="" placeholder="Username" required ng-model="user.username">
 		</div>
 
 		<div class="form-row">
-			<input type="email" value="" placeholder="E-mail" required>
+			<input type="text" value="" placeholder="E-mail">
 		</div>
 
 		<div class="form-row">
-			<input type="password" value="" placeholder="Password" required>
+			<input type="password" value="" placeholder="Password" required ng-model="user.password">
 		</div>
 
-		<div class="form-row">
+		<!-- <div class="form-row">
 			<input type="password" value="" placeholder="Confirm password">
-		</div>
+		</div> -->
 
 		<div class="terms">
 			<input type="checkbox">
@@ -24,7 +24,7 @@
 			<a href="#">Terms and Conditions</a>
 		</div>
 
-		<button class="btn" href="#">Sign up</button>
+		<button class="btn" href="#" ng-click="saveUser()">Sign up</button>
 			
 	</form>
 	

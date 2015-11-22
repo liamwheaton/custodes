@@ -36,7 +36,9 @@ var paths = {
 		'bower_components/angular-sanitize/angular-sanitize.min.js',
 		'bower_components/angular-animate/angular-animate.min.js',
 		'bower_components/lodash/lodash.min.js',
-		'bower_components/restangular/dist/restangular.min.js'
+		'bower_components/restangular/dist/restangular.min.js',
+		'bower_components/angular-simple-logger/dist/angular-simple-logger.min.js',
+		'bower_components/angular-google-maps/dist/angular-google-maps.min.js'
 		
 	],
 	output: 'assets/dist/'
@@ -58,7 +60,7 @@ gulp.task('angular', function() {
 		.pipe(order(['app.js']))                            // make sure app.js is first
 		.on('error', function(){})                          // suppress jscs error reporting
 		.pipe(annotate())                                   // make angular callbacks minifyable
-		.pipe(uglify())                                     // minify the code
+		.pipe(uglify())                                     // minify the code  
 		.pipe(concat('app.min.js'))                         // merge them all into the same file
 		.pipe(gulp.dest(paths.output))                      // save it into the dist folder
 		
@@ -69,14 +71,14 @@ gulp.task('angular', function() {
 gulp.task('libs', function() {
 	var stream = gulp.src(paths.libs)                       // grab all the libs
 		.pipe(order(['angular.min.js', 'lodash.min.js', 'restangular.min.js']))
-		.pipe(concat('libs.js'))                        // merge them all into the same file
+		.pipe(concat('libs.js'))                            // merge them all into the same file
 
-	stream.pipe(clone())
+	stream.pipe(clone())                                    // Readable library
 		.pipe(jsbeautify())
 		.pipe(rename('libs.js'))
 		.pipe(gulp.dest(paths.output))
 
-	stream.pipe(clone())
+	stream.pipe(clone())                                    // minified library
 		.pipe(uglify())                                     // minify the code
 		.pipe(rename('libs.min.js'))
 		.pipe(gulp.dest(paths.output))                      // save it into the dist folder

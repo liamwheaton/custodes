@@ -6,7 +6,7 @@
 	<title>{{ siteTitle }}</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<link href='https://fonts.googleapis.com/css?family=Roboto:500' rel='stylesheet' type='text/css'>
-	<script src="https://maps.googleapis.com/maps/api/js"></script>
+	<script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
 	<link rel="stylesheet" href="assets/dist/style.min.css">
 </head>
 <body>
@@ -15,17 +15,6 @@
 	
 	<script src="assets/dist/libs.min.js"></script>
 	<script src="assets/dist/app.min.js"></script>
-	<script>
-      function initialize() {
-        var mapCanvas = document.getElementById('map');
-        var mapOptions = {
-          center: new google.maps.LatLng(44.5403, -78.5463),
-          zoom: 8,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        var map = new google.maps.Map(mapCanvas, mapOptions);
-      }
-      google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
+	
 </body>
 </html>

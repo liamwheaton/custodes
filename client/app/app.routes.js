@@ -1,6 +1,10 @@
 angular.module('app.routes')
 
-.config(function($routeProvider, RestangularProvider) { 
+.config(function($routeProvider, RestangularProvider, uiGmapGoogleMapApiProvider) { 
+
+	uiGmapGoogleMapApiProvider.configure({
+		key: 'AIzaSyBY72HDRm-tIkHB7naH0pykymeIwl3ibGI'
+	});
 
 	RestangularProvider.setBaseUrl('http://localhost:3000');
 
@@ -11,14 +15,23 @@ angular.module('app.routes')
 			templateUrl: 'views/landing.html'
 		})
 
-		.when('/users/login', {
+		.when('/user/login', {
 			controller: 'loginCtrl',
 			templateUrl: 'views/login.html'
 		})
 
-		.when('/users/register', {
+		.when('/user/register', {
 			controller: 'regCtrl',
 			templateUrl: 'views/register.html'
+		})
+
+		.when('/user/:id/edit', {
+			controller: 'editCtrl',
+			templateUrl: 'views/edit.html'
+		})
+
+		.when('/user/:id/delete', {
+			controller: 'deleteCtrl'
 		})
 
 		.when('/map', {
@@ -33,7 +46,7 @@ angular.module('app.routes')
 })
 .factory('UserRestangular', function(Restangular){
 	return Restangular.withConfig(function(RestangularConfigurer){
-		RestangularConfigurer.SetRestangularfields({
+		RestangularConfigurer.setRestangularFields({
 			id: '_id'
 		});
 	});

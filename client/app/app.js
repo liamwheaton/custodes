@@ -13,6 +13,8 @@ angular.module('app', [
 	'ngResource',
 	'ngSanitize',
 	'restangular',
+	'uiGmapgoogle-maps',
+
 	
 	'app.controllers',
 	'app.directives',
