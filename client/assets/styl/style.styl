@@ -195,11 +195,11 @@ p, li
 			flex 1
 			
 			svg
-				padding 5px 0 0 5px
+				padding 8px 0 0 5px
 				max-width 40px
 		h3
 			flex 1
-			margin-top 0.7em
+			margin-top 0.8em
 			text-align center
 			
 		#drawer-toggle
@@ -211,7 +211,9 @@ p, li
 			outline none
 			
 			#burgericon
-					
+				
+				margin-top 2px
+
 				.frstbar
 					transition all 0.1s linear
 					transform rotate(0deg)
@@ -233,6 +235,32 @@ p, li
 					&.open
 						width 0
 						opacity 0
+	.mapbtn
+		position absolute
+		color light-grey
+		font-size 1.6em
+		width 45px
+		height 45px
+		background red
+		border-radius 25px
+		border none
+		outline none
+		box-shadow active1
+		z-index 1
+		right 22px
+		
+		&:active
+			box-shadow active3
+	
+	.ping
+		bottom 120px	
+
+	.pin
+		bottom 65px	
+
+	.center
+		background blue
+		bottom 10px
 			
 	.open
 		position absolute
@@ -255,6 +283,7 @@ p, li
 		display flex
 		flex-direction column
 		justify-content space-between
+		z-index 2
 		
 		h1
 			margin-bottom 0

@@ -1,14 +1,6 @@
 angular.module('app.controllers')
 
-.controller('mapCtrl', function($scope, User, $routeParams, uiGmapGoogleMapApi) {
-
-	$scope.map = {
-		center: {
-			latitude: 45,
-			longitude: -73
-		},
-		zoom: 8
-	};
+.controller('mapCtrl', function($scope, User, $routeParams, uiGmapGoogleMapApi, $geolocation) {
 
 	$scope.pageClass = 'page-map';
 
@@ -21,10 +13,36 @@ angular.module('app.controllers')
 			$scope.class = 'close';
 	};
 
-	$scope.users = User.one($routeParams.id).get().$object;
+	 $geolocation.getCurrentPosition({
+        timeout: 60000
+     }).then(function(position) {
+        $scope.myPosition = position;
+     });
 
-	uiGmapGoogleMapApi.then(function(maps) {
+	$geolocation.watchPosition({
+		timeout: 60000,
+		maximumAge: 250,
+		enableHighAccuracy: true
+	});
 
-    });
+	
+
+	$scope.$watch('myPosition.coords', function (newValue, oldValue){
+		
+
+
+		$scope.map = {
+			center: {
+				latitude: newValue.latitude,
+				longitude: newValue.longitude
+			},
+			zoom: 16
+		};
+
+	});
+
+	// uiGmapGoogleMapApi.then(function(maps) {
+
+ //    });
 	
 });

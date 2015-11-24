@@ -14,6 +14,7 @@ angular.module('app', [
 	'ngSanitize',
 	'restangular',
 	'uiGmapgoogle-maps',
+	'ngGeolocation',
 
 	
 	'app.controllers',

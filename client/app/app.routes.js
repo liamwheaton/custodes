@@ -6,7 +6,7 @@ angular.module('app.routes')
 		key: 'AIzaSyBY72HDRm-tIkHB7naH0pykymeIwl3ibGI'
 	});
 
-	RestangularProvider.setBaseUrl('http://localhost:3000');
+	RestangularProvider.setBaseUrl('http://127.0.0.1:3000');
 
 	$routeProvider
 	
