@@ -51,6 +51,16 @@ angular.module('app.routes')
 		});
 	});
 })
+.factory('PinRestangular', function(Restangular){
+	return Restangular.withConfig(function(RestangularConfigurer){
+		RestangularConfigurer.setRestangularFields({
+			id: '_id'
+		});
+	});
+})
 .factory('User', function(UserRestangular){
 	return UserRestangular.service('user');
+})
+.factory('Pin', function(UserRestangular){
+	return UserRestangular.service('pin');
 });

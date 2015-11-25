@@ -1,9 +1,10 @@
 angular.module('app.controllers')
 
-.controller('mapCtrl', function($scope, User, $routeParams, uiGmapGoogleMapApi, $geolocation) {
+.controller('mapCtrl', function($scope, $routeParams, uiGmapGoogleMapApi, $geolocation, User, Pin) {
+
+	// Drawer class animation
 
 	$scope.pageClass = 'page-map';
-
 	$scope.class = 'close';
 
 	$scope.changeClass = function(){
@@ -12,6 +13,8 @@ angular.module('app.controllers')
 		else 
 			$scope.class = 'close';
 	};
+
+	// Map Geolocation
 
 	 $geolocation.getCurrentPosition({
         timeout: 60000
@@ -25,11 +28,10 @@ angular.module('app.controllers')
 		enableHighAccuracy: true
 	});
 
-	
-
 	$scope.$watch('myPosition.coords', function (newValue, oldValue){
-		
 
+		$scope.pins = Pin.getList().$object;
+		console.log($scope);
 
 		$scope.map = {
 			center: {
@@ -39,10 +41,21 @@ angular.module('app.controllers')
 			zoom: 16
 		};
 
+		var marker1 = {id:1, latitude: -36.849562600000006, longitude: 174.7529218};
+		$scope.markers = [];
+		$scope.markers[0] = marker1;
+
+		
+		
+		// $scope.marker = {
+		// 	coords:{
+		// 		latitude: newValue.latitude,
+		// 		longitude: newValue.longitude
+		// 	}
+		// };
+
 	});
-
-	// uiGmapGoogleMapApi.then(function(maps) {
-
- //    });
+	
+	
 	
 });
