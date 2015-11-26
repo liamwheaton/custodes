@@ -39,7 +39,8 @@ var paths = {
 		'bower_components/restangular/dist/restangular.min.js',
 		'bower_components/angular-simple-logger/dist/angular-simple-logger.min.js',
 		'bower_components/angular-google-maps/dist/angular-google-maps.min.js',
-		'bower_components/ngGeolocation/ngGeolocation.min.js'
+		'bower_components/ngGeolocation/ngGeolocation.min.js',
+		'bower_components/angular-cookies/angular-cookies.min.js'
 		
 	],
 	output: 'assets/dist/'
@@ -61,8 +62,8 @@ gulp.task('angular', function() {
 		.pipe(order(['app.js']))                            // make sure app.js is first
 		.on('error', function(){})                          // suppress jscs error reporting
 		.pipe(annotate())                                   // make angular callbacks minifyable
-		.pipe(uglify())                                     // minify the code  
-		.pipe(concat('app.min.js'))                         // merge them all into the same file
+		.pipe(uglify())                                    // minify the code   
+		.pipe(concat('app.min.js'))                            // merge them all into the same file
 		.pipe(gulp.dest(paths.output))                      // save it into the dist folder
 		
 	return stream

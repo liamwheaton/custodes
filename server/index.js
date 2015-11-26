@@ -4,6 +4,7 @@ var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var passport = require('passport');
+var path = require('path');
 
 // import controllers
 var pinController = require('./controllers/pinController.js');
@@ -48,6 +49,8 @@ router.route('/authenticate')
 
 
 app.use('/api', router);
+
+app.use(express.static(path.join(__dirname, '../client')));
 
 console.log('Listening on 3000');
 app.listen(process.env.PORT || 3000);

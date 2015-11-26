@@ -1,6 +1,6 @@
 angular.module('app.controllers')
 
-.controller('mapCtrl', function($scope, $routeParams, uiGmapGoogleMapApi, $geolocation, User, Pin) {
+.controller('mapCtrl', function($scope, $rootScope, $location, AuthenticationService, uiGmapGoogleMapApi, $geolocation) {
 
 	// Drawer class animation
 
@@ -30,8 +30,8 @@ angular.module('app.controllers')
 
 	$scope.$watch('myPosition.coords', function (newValue, oldValue){
 
-		$scope.pins = Pin.getList().$object;
-		console.log($scope);
+
+		
 
 		$scope.map = {
 			center: {
@@ -41,9 +41,9 @@ angular.module('app.controllers')
 			zoom: 16
 		};
 
-		var marker1 = {id:1, latitude: -36.849562600000006, longitude: 174.7529218};
-		$scope.markers = [];
-		$scope.markers[0] = marker1;
+		// var marker1 = {id:1, latitude: -36.849562600000006, longitude: 174.7529218};
+		// $scope.markers = [];
+		// $scope.markers[0] = marker1;
 
 		
 		
@@ -55,6 +55,8 @@ angular.module('app.controllers')
 		// };
 
 	});
+
+	console.log($rootScope);
 	
 	
 	

@@ -1,15 +1,15 @@
 <div class="wrapper">
 
-	<form class="form-login" method="post" action="/users/login">
+	<form class="form-login" ng-submit="login()" role="form">
 		<div class="form-row">
-			<input type="text" value="" placeholder="username" required>
+			<input type="text" value="" placeholder="username" required ng-model="username">
 		</div>
 
 		<div class="form-row">
-			<input type="password" value="" placeholder="password" required>
+			<input type="password" value="" placeholder="password" required ng-model="password">
 		</div>
 
-		<button class="btn" href="#">Login</button>
+		<button type="submit" class="btn">Login</button>
 		<a class="link" href="#">I've forgotten my details</a>
 		
 	</form>

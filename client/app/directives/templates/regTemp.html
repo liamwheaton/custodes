@@ -1,30 +1,34 @@
 <div class="wrapper">
 
-	<form class="form-login">
+	<form class="form-login" ng-submit="signUp()" role="form">
 
 		<div class="form-row">
-			<input type="text" value="" placeholder="Username" required ng-model="user.username">
+			<input type="text" value="" placeholder="Username" required ng-model="username">
 		</div>
 
-		<div class="form-row">
+		<!-- <div class="form-row">
 			<input type="text" value="" placeholder="E-mail">
-		</div>
+		</div> -->
 
 		<div class="form-row">
-			<input type="password" value="" placeholder="Password" required ng-model="user.password">
+			<input type="password" value="" placeholder="Password" required ng-model="password">
 		</div>
 
-		<div class="form-row">
+		<!-- <div class="form-row">
 			<input type="password" value="" placeholder="Confirm password">
 		</div>
-
+		
 		<div class="terms">
 			<input type="checkbox">
 			<label for="">Accept</label>
 			<a href="#">Terms and Conditions</a>
-		</div>
+		</div> -->
+		
+		
+		<button type="submit" class="btn" ng-disabled="form.$invalid || dataLoading">Sign up</button>
 
-		<button class="btn" href="#" ng-click="saveUser()">Sign up</button>
+		<!-- noderestful -->
+		<!-- <button class="btn" href="#" ng-click="saveUser()">Sign up</button> -->
 			
 	</form>
 	
