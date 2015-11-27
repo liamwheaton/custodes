@@ -6,7 +6,7 @@ angular.module('app.controllers')
 	// reset login status
 	AuthenticationService.ClearCredentials();
 
-	$scope.signUp = function() {
+	$scope.SignUp = function() {
 
 		$scope.dataLoading = true;
 

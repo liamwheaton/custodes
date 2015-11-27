@@ -38,13 +38,13 @@ angular.module('app', [
 	}
 
 	// Check if user is logged in on location route changes
-	$rootScope.$on('$locationChangeStart', function(event, next, current){
+	// $rootScope.$on('$locationChangeStart', function(event, next, current){
 
-		// redirect if not logged in
-		if (($location.path() !== '/login' && $location.path() !== '/register') && !$rootScope.globals.currentUser) {
-			$location.path('/login');
-		}
-	});
+	// 	// redirect if not logged in
+	// 	if (($location.path() !== '/login' && $location.path() !== '/register') && !$rootScope.globals.currentUser) {
+	// 		$location.path('/login');
+	// 	}
+	// });
 
 });
 

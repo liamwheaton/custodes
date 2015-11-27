@@ -2,8 +2,9 @@
 <div ping-btn></div>
 <div pin-btn></div>
 <div center-btn></div>
-<ui-gmap-google-map center="map.center" zoom="map.zoom">
-	<ui-map-marker models="markers" coords="'self'" modelsbyref="false" /> 
+<ui-gmap-google-map center="map.center" zoom="map.zoom" options="options" bounds="map.bounds">
+	 <ui-gmap-markers models="randomMarkers" coords="'self'" icon="'icon'" idkey="id">
+        </ui-gmap-markers>
 </ui-gmap-google-map>
 <div drawer></drawer>
 
