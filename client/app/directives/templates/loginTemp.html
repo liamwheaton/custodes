@@ -1,19 +1,26 @@
 <div class="wrapper">
 
-	<form class="form-login" ng-submit="login()" role="form">
+	<form class="form-container" name="form-container" ng-submit="login()" role="form" novalidate>
 
 		<div class="form-row">
-			<input type="text" value="" placeholder="Username" required ng-model="username">
+			<input type="text" name="username" placeholder="Username" ng-model="username" ng-minlength="3" ng-maxlength="16" required>
+			<div class="form-error" ng-messages="form-container.username.$error" ng-show="form-container.username.$dirty" role="alert">
+				<div ng-message="required">This field is required</div>
+				<div ng-message="minlength">Usernames require at least 3 characters</div>
+				<div ng-message="maxlength">Usernames canot be over 16 characters</div>
+			</div>
 		</div>
 
 		<div class="form-row">
 			<input type="password" value="" placeholder="Password" required ng-model="password">
 		</div>
-
-		<button type="submit" class="btn">Login</button>
+		
+		<div class="form-validation">
+			<button type="submit" class="btn">Login</button>
+		</div>
 		<a class="link" href="#">I've forgotten my details</a>
+		<a class="link" href="#/register">Create an account</a>
 		
 	</form>
-	
 	
 </div>

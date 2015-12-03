@@ -40,7 +40,8 @@ var paths = {
 		'bower_components/angular-simple-logger/dist/angular-simple-logger.min.js',
 		'bower_components/angular-google-maps/dist/angular-google-maps.min.js',
 		'bower_components/ngGeolocation/ngGeolocation.min.js',
-		'bower_components/angular-cookies/angular-cookies.min.js'
+		'bower_components/angular-cookies/angular-cookies.min.js',
+		'bower_components/angular-messages/angular-messages.min.js'
 		
 	],
 	output: 'assets/dist/'
@@ -62,8 +63,8 @@ gulp.task('angular', function() {
 		.pipe(order(['app.js']))                            // make sure app.js is first
 		.on('error', function(){})                          // suppress jscs error reporting
 		.pipe(annotate())                                   // make angular callbacks minifyable
-		                                   // minify the code   .pipe(uglify()) 
-		.pipe(concat('app.min.js'))                            // merge them all into the same file
+		.pipe(uglify())                                     // minify the code   
+		.pipe(concat('app.min.js'))                          // merge them all into the same file
 		.pipe(gulp.dest(paths.output))                      // save it into the dist folder
 		
 	return stream
@@ -72,7 +73,7 @@ gulp.task('angular', function() {
 
 gulp.task('libs', function() {
 	var stream = gulp.src(paths.libs)                       // grab all the libs
-		.pipe(order(['angular.min.js', 'lodash.min.js', 'restangular.min.js']))
+		.pipe(order(['angular.min.js', 'lodash.min.js', 'angular-messages.min.js']))
 		.pipe(concat('libs.js'))                            // merge them all into the same file
 
 	stream.pipe(clone())                                    // Readable library

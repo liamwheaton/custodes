@@ -9,7 +9,7 @@
 body 
 	font-family main
 	margin 0
-	color light-grey
+	color dark-grey
 
 p, li
 	line-height 1.5
@@ -53,7 +53,7 @@ p, li
 		margin 0 auto
 		max-width 100%
 		min-height 100%
-		background dark-grey
+		background light-grey
 			
 		.wrapper
 			margin 0 auto
@@ -68,7 +68,7 @@ p, li
 				max-width 270px
 						
 			.btn
-				background red
+				background blue
 				color light-grey
 				font-size 1em
 				font-weight bold
@@ -95,7 +95,12 @@ p, li
 		
 			.fa
 				font-size 2.5em
-				color light-grey
+				
+			.fa-twitter-square
+				color #00aced
+				
+			.fa-facebook-official
+				color #3b5998
 				
 	// Forms: Login view/Register view
 	
@@ -106,7 +111,7 @@ p, li
 		margin 0 auto
 		max-width 100%
 		min-height 100%
-		background dark-grey
+		background light-grey
 		
 		.custodes-logo
 			height 100px
@@ -127,7 +132,7 @@ p, li
 				text-align center
 				margin 0	
 				
-			.form-login
+			.form-container
 				text-align center
 				margin-top 1em
 				
@@ -136,11 +141,14 @@ p, li
 					
 					input
 						text-align center
-						background-color light-grey
+						color dark-grey
+						background-color lighten( blue, 80% )
 						border-radius 3px
 						font-size 1em
 						padding 10px 0
 						width 250px
+					input.ng-dirty.ng-invalid
+						background-color lighten( red, 80% )
 						
 				.terms
 					margin 20px 0
@@ -156,27 +164,48 @@ p, li
 						margin-right 5px
 					a
 						text-decoration none
-						color red
+						color blue
 						
-				.btn
-					background red
-					color light-grey
-					font-size 1em
-					font-weight 700
-					line-height 25px
-					padding 10px 0
-					text-decoration none
-					border-radius 3px
-					box-shadow none
-					display block
-					width 250px
-					margin 1em auto 0 auto
-					border none	
+				.form-validation
+					position relative
+						
+					.btn
+						background blue
+						color light-grey
+						font-size 1em
+						font-weight 700
+						line-height 25px
+						padding 10px 0
+						text-decoration none
+						border-radius 3px
+						box-shadow none
+						display block
+						width 250px
+						margin 1em auto 0 auto
+						border none
+						
+					.error
+						position absolute
+						left 5px
+						top 0
+						background red
+						color light-grey
+						font-size 1em
+						font-weight 700
+						line-height 25px
+						padding 10px 0
+						border-radius 3px
+						display block
+						width 250px
+						
+					.error.ng-inactive
+						display none
+					
 					
 				.link
 					text-decoration none
 					font-size 1em
-					color red
+					color blue
 					display block
 					margin-top 1em
 					

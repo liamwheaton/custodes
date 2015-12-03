@@ -12,12 +12,12 @@ angular.module('app', [
 	'ngAnimate',
 	'ngCookies',
 	'ngResource',
+	'ngMessages',
 	'ngSanitize',
 	'restangular',
 	'uiGmapgoogle-maps',
 	'ngGeolocation',
 
-	
 	'app.controllers',
 	'app.directives',
 	'app.resources',
