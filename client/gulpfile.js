@@ -62,7 +62,7 @@ gulp.task('angular', function() {
 		.pipe(order(['app.js']))                            // make sure app.js is first
 		.on('error', function(){})                          // suppress jscs error reporting
 		.pipe(annotate())                                   // make angular callbacks minifyable
-		.pipe(uglify())                                    // minify the code   
+		                                   // minify the code   .pipe(uglify()) 
 		.pipe(concat('app.min.js'))                            // merge them all into the same file
 		.pipe(gulp.dest(paths.output))                      // save it into the dist folder
 		

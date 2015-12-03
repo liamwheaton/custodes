@@ -1,91 +1,74 @@
 // Retrieved from http://jasonwatmore.com/post/2014/05/26/AngularJS-Basic-HTTP-Authentication-Example.aspx
 angular.module('app.services')
   
-.factory('AuthenticationService', function(Base64, $http, $cookieStore, $rootScope, $timeout){
+.factory('AuthenticationService', function(Base64, $http, $cookieStore, $rootScope, $timeout) {
 
-        var service = {};
+    var service = {};
 
-        service.Login = function (username, password, callback) {
-            
-            $http.post('/api/authenticate', {
-                username: username,
-                password: password
+    service.Login = function (username, password, callback) {
+        
+        $http.post('/api/authenticate', {
+            username: username,
+            password: password
+        })
+        .success(function(response){
+            callback(response);
+        });
+       
+        $http.post('/api/authenticate', { username: username, password: password })
+           .success(function (response) {
+               callback(response);
+           });
+    };
+
+    service.SignUp = function(username, password, callback) {
+
+        $http.post('/api/users', { username: username, password: password })
+            .success(function(response) {
+                callback(response);
             })
-            .success(function(response){
-                // Refresh pins to change pin colours
-                
+            .error(function(response) {
                 callback(response);
             });
-            /* Dummy authentication for testing, uses $timeout to simulate api call
-             ----------------------------------------------*/
-            // $timeout(function(){
-            //     var response = { success: username === 'test' && password === 'test' };
-            //     if(!response.success) {
-            //         response.message = 'Username or password is incorrect';
-            //     }
-            //     callback(response);
-            // }, 1000);
-            
- 
-            /* Use this for real authentication
-             ----------------------------------------------*/
-            $http.post('/api/authenticate', { username: username, password: password })
-               .success(function (response) {
-                   callback(response);
-               });
- 
-        };
+    };
 
-        service.SignUp = function(username, password, callback) {
+     $rootScope.loggedIn = function() {
 
-            $http.post('/api/users', {
+        if ($rootScope.globals && $rootScope.globals.currentUser)
+            return true;
+        return false;
+    };
+
+
+    $rootScope.getUsername = function() {
+
+        if ($rootScope.loggedIn())
+            return $rootScope.globals.currentUser.username;
+    };
+
+    service.SetCredentials = function (username, password) {
+
+        var authdata = Base64.encode(username + ':' + password);
+
+        $rootScope.globals = {
+            currentUser: {
                 username: username,
-                password: password
-            })
-            .success(function(response){
-               
-                callback(response);
-            })
-            .error(function(response){
-                callback(response);
-            });
-
+                authdata: authdata
+            }
         };
 
-         $rootScope.loggedIn = function() {
-            if ($rootScope.globals && $rootScope.globals.currentUser)
-                return true;
-            return false;
-        };
+        $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata; // jshint ignore:line
+        $cookieStore.put('globals', $rootScope.globals);
+    };
 
+    service.ClearCredentials = function () {
+        $rootScope.globals = {};
+        $cookieStore.remove('globals');
+        $http.defaults.headers.common.Authorization = 'Basic ';
+    };
 
-        $rootScope.getUsername = function() {
-            if ($rootScope.loggedIn())
-                return $rootScope.globals.currentUser.username;
-        };
-  
-        service.SetCredentials = function (username, password) {
-            var authdata = Base64.encode(username + ':' + password);
-  
-            $rootScope.globals = {
-                currentUser: {
-                    username: username,
-                    authdata: authdata
-                }
-            };
-  
-            $http.defaults.headers.common['Authorization'] = 'Basic ' + authdata; // jshint ignore:line
-            $cookieStore.put('globals', $rootScope.globals);
-        };
-  
-        service.ClearCredentials = function () {
-            $rootScope.globals = {};
-            $cookieStore.remove('globals');
-            $http.defaults.headers.common.Authorization = 'Basic ';
-        };
-  
-        return service;
-    })
+    return service;
+})
   
 .factory('Base64', function () {
     /* jshint ignore:start */

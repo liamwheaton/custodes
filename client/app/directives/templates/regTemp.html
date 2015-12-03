@@ -1,31 +1,39 @@
 <div class="wrapper">
 
-	<form class="form-login" ng-submit="SignUp()" role="form">
+	<form class="form-login" name="form-login" ng-submit="signUp()" role="form" novalidate>
 
 		<div class="form-row">
-			<input type="text" value="" placeholder="Username" required ng-model="username">
+			<input type="text" name="username" placeholder="Username" ng-model="username" ng-minlength="3" required>
+			<div ng-messages="form-login.username.$error">
+				<p ng-message="required">This field is required</p>
+				<p ng-message="minlength">This field is required</p>
+			</div>
 		</div>
-
-		<!-- <div class="form-row">
-			<input type="text" value="" placeholder="E-mail">
-		</div> -->
 
 		<div class="form-row">
-			<input type="password" value="" placeholder="Password" required ng-model="password">
+			<input type="text" name="email" placeholder="E-mail" required>
+			<div ng-messages="form-login.email.$error">
+				<p ng-message="required">This field is required</p>
+				<p ng-message="minlength">This field is required</p>
+			</div>
 		</div>
 
-		<!-- <div class="form-row">
-			<input type="password" value="" placeholder="Confirm password">
+		<div class="form-row">
+			<input type="password" value="" placeholder="Password" required ng-model="password" required>
+		</div>
+
+		<div class="form-row">
+			<input type="password" value="" placeholder="Confirm password" required>
 		</div>
 		
 		<div class="terms">
 			<input type="checkbox">
 			<label for="">Accept</label>
 			<a href="#">Terms and Conditions</a>
-		</div> -->
+		</div>
 		
 		
-		<input type="submit" class="btn" ng-disabled="form.$invalid || dataLoading"></input>
+		<button type="submit" class="btn" ng-disabled="form-login.$invalid">Sign up</button>
 
 		<!-- noderestful -->
 		<!-- <button class="btn" href="#" ng-click="saveUser()">Sign up</button> -->

@@ -19,7 +19,7 @@ var app = express();
 
 // Body parser stuff
 app.use(bodyParser.urlencoded({
-  extended: true
+	extended: true
 }));
  
 app.use(bodyParser.json({
@@ -35,18 +35,17 @@ router.route('/pins')
 	.post(authController.isAuthenticated, pinController.postPins)
 	.get(pinController.getPins);
 
-router.route('/pins/:pin_id')
-	.get(authController.isAuthenticated, pinController.getPin)
-	.put(authController.isAuthenticated, pinController.putPin)
-	.delete(authController.isAuthenticated, pinController.deletePin);
+// router.route('/pins/:pin_id')
+// 	// .get(authController.isAuthenticated, pinController.getPin)
+// 	.put(authController.isAuthenticated, pinController.putPin)
+// 	.delete(authController.isAuthenticated, pinController.deletePin);
 
 router.route('/users')
-  .post(userController.postUsers)
-  .get(authController.isAuthenticated, userController.getUsers);
+	.post(userController.postUsers)
+	.get(authController.isAuthenticated, userController.getUsers);
  
 router.route('/authenticate')
-  .post(userController.authenticateUser);
-
+	.post(userController.authenticateUser);
 
 app.use('/api', router);
 

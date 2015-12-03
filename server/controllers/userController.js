@@ -5,6 +5,7 @@ var User = require('../models/user.js');
 // GET users
 
 exports.getUsers = function(req, res) {
+
 	User.find(function(err, users) {
 		if (err)
 			res.send(err);
@@ -16,19 +17,19 @@ exports.getUsers = function(req, res) {
 // POST users
 
 exports.postUsers = function(req, res) {
-	if(!req.body.username || !req.body.password){
-		res.json({ message: 'Error processing request' });
+	
+	if(!req.body.username || !req.body.password) {
+		res.json({ message: 'No username or password - Error processing request' });
 		return;
-	}
-
+	} 
 	var user = new User({
 		username: req.body.username,
 		password: req.body.password
 	});
 
-	user.save(function(err){
-		if(err){
-			res.json({ message: 'User already exists' });
+	user.save(function(err) {
+		if(err) {
+			res.json({ message: 'Save error - Failed to create account' });
 			return;
 		}
 		res.json({ success: 'Account created' });
@@ -37,25 +38,26 @@ exports.postUsers = function(req, res) {
 
 // Auth user
 
-exports.authenticateUser = function(req, res){
-	if(!req.body.username || !req.body.password ){
+exports.authenticateUser = function(req, res) {
+
+	if(!req.body.username || !req.body.password ) {
 		res.json({ message: 'Error processing request' });
 		return;
 	}
-	User.findOne({ username: req.body.username }, function(err, user){
-		if(!user){
+	User.findOne({ username: req.body.username }, function(err, user) {
+		if(!user) {
 			res.json({ message: 'That username does not exist' });
 			return;
 		}
-		user.verifyPassword(req.body.password, function(err, isMatch){
-			if(err){
+		user.verifyPassword(req.body.password, function(err, isMatch) {
+			if(err) {
 				res.json({ message: err });
 				return;
-			} else if(!isMatch){
+			} else if(!isMatch) {
 				res.json({ message: 'Password incorrect' });
 				return;
 			} else {
-				res.json({ success: 'authenticated' });
+				res.json({ success: 'Authenticated' });
 			}
 		});
 	});
