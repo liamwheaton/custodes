@@ -58,16 +58,6 @@ exports.postUsers = function(req, res) {
 	});
 };
 
-// exports.postUsername = function(req, res) {
-// 	 if(req) {
-// 	 	res.json({
-// 	 		message: 'User already exists'
-// 	 	});
-// 	 }
-// };
-
-// Auth user
-
 exports.authenticateUser = function(req, res) {
 
 	if(!req.body.username || !req.body.password ) {

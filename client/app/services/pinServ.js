@@ -18,14 +18,12 @@ angular.module('app.services')
     pinService.Retrieve = function(callback) {
 
         $http.get('/api/pins')
-            .success(function(Pin) {
-                
+            .success(function(Pin) {   
                 callback(Pin);
             })
             .error(function(Pin) {
                 callback(Pin);
             });
-
     };
 
     return pinService;

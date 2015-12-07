@@ -1,4 +1,3 @@
-// var restful = require('node-restful');
 var User = require('../models/user.js'); 
 var Pin = require('../models/pin.js'); 
 var mongoose = require('../node_modules/mongoose');
@@ -86,43 +85,6 @@ exports.getPins = function(req, res) {
 //     });
 // };
 
-// // GET Pins *************
-
-// exports.getPins = function(req, res) {
-// 	// Use pin model to find all pins
-// 	//from user username
-// 	Pin.find({}).lean().exec(function(err, pins){
-// 		if(err){
-// 			res.send(err);
-// 			return;
-// 		}
-// 		// Set username on each pin 
-// 		var counter = 0;
-// 		var l = pins.length;
-
-// 		// Create closure to access pin
-// 		var closure = function(pin){
-// 			return function(err, user){
-// 				counter++;
-
-// 				if(err)
-// 					res.send(err);
-
-// 				pin.username = user.username;
-
-// 				// when users have been set
-// 				if(counter === l) {
-// 					res.json(pins);
-// 					return;
-// 				}
-// 			};
-// 		};
-// 		// Iterate through pins to find associated usernames
-// 		for (var i = 0; i < l; i++) {
-// 			User.findById(pins[i].userId, closure(pins[i]));
-// 		}
-// 	});
-// };
 // // ==============
 // //GET pins by distance to user?
 // // ==============
