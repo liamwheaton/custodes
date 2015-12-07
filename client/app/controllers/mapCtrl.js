@@ -35,6 +35,8 @@ angular.module('app.controllers')
 		enableHighAccuracy: true
 	});
 
+	
+
 	$scope.$watch('myPosition.coords', function (newValue, oldValue){
 
 		$scope.map = {
@@ -44,11 +46,51 @@ angular.module('app.controllers')
 			},
 			zoom: 16
 		};
+
+		$scope.Markers = [];
+
+		PinService.Retrieve(function(Pin) {
+			for(var i = 0; i < Pin.length; i++) {
+	        	$scope.Markers.push({
+					id: i,
+					username: Pin[i].username,
+					latitude: Pin[i].latitude,
+					longitude: Pin[i].longitude
+	            });
+	        }
+		});
+
 	});
+
+	
 
 	// Add marker function
 
-	$scope.Markers = [];
+	
+
+	
+	// $scope.retrieve = function() {
+
+	// 	PinService.Retrieve(function(response) {
+	// 		if(response.success) {
+	// 			console.log(response);
+	// 			for(var i = 0; i < response.length; i++) {
+					
+	// 				// console.log(response[i]);
+	// 				// $scope.Markers.push({
+	// 				// 	response[i];
+	// 				// }
+	// 				// );
+	// 			}
+
+
+	// 		} else {
+	// 			$scope.error = response.message;
+	// 		}
+	// 	});	
+	// };
+
+	// console.log($scope);
 
 	$scope.add = function() {
 
@@ -64,7 +106,7 @@ angular.module('app.controllers')
 
 		PinService.Add( pinData, function(response) {
 				if(response.success) {
-					
+					console.log('Pin added');
 				} else {
 					$scope.error = response.message;
 				}
@@ -100,4 +142,8 @@ angular.module('app.controllers')
 			};
 		});
 	};
+
+	
+
+	console.log($scope);
 });

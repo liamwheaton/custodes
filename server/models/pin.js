@@ -7,7 +7,6 @@ var PinSchema = new mongoose.Schema({
 	username: { type: String},
 	latitude: { type: Number },
 	longitude: { type: Number},
-	// location: {type: [Number], required: true},
 	voteUp: { type: Number },
 	voteDown: { type: Number }
 });
