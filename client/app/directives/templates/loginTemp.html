@@ -1,23 +1,27 @@
 <div class="wrapper">
 
-	<form class="form-container" name="form-container" ng-submit="login()" role="form" novalidate>
+	<form class="form-container" name="formContainer" ng-submit="login()" role="form" novalidate>
 
 		<div class="form-row">
-			<input type="text" name="username" placeholder="Username" ng-model="username" ng-minlength="3" ng-maxlength="16" required>
-			<div class="form-error" ng-messages="form-container.username.$error" ng-show="form-container.username.$dirty" role="alert">
-				<div ng-message="required">This field is required</div>
-				<div ng-message="minlength">Usernames require at least 3 characters</div>
-				<div ng-message="maxlength">Usernames canot be over 16 characters</div>
-			</div>
+			<input type="text" name="username" placeholder="Username" ng-model="username" ng-model-options="{ updateOn: 'submit' }" server-error>
 		</div>
 
+		<!-- /^[A-Za-z0-9à-ú-_\.]{6,8}$/ -->
+
 		<div class="form-row">
-			<input type="password" value="" placeholder="Password" required ng-model="password">
+			<input type="password" name="password" placeholder="Password"  ng-model="password" ng-model-options="{ updateOn: 'submit' }" server-error>
 		</div>
 		
 		<div class="form-validation">
+
 			<button type="submit" class="btn">Login</button>
+
+			<div ng-show="formContainer.password.$dirty && formContainer.password.$invalid">
+				<span class="error" ng-show="formContainer.password.$error.server">{{ error }}</span>
+			</div>
+
 		</div>
+
 		<a class="link" href="#">I've forgotten my details</a>
 		<a class="link" href="#/register">Create an account</a>
 		

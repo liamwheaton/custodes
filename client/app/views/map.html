@@ -3,8 +3,22 @@
 <div pin-btn></div>
 <div center-btn></div>
 <ui-gmap-google-map center="map.center" zoom="map.zoom" options="options" bounds="map.bounds">
-	 <ui-gmap-markers models="Markers" coords="'self'" icon="'icon'" idkey="id">
-        </ui-gmap-markers>
+	<ui-gmap-markers models="Markers" coords="'self'" icon="'icon'" idkey="id" click="onClick">
+		<ui-gmap-windows show="show">
+			<div class="window">
+				<div>
+					<a>{{ marker.username }}</a>
+					<div class="time-container">
+						<p>10m</p>
+						<div class="votes">
+							<button class="up vote"><i class="fa fa-caret-up"></i></button>
+							<button class="down vote"><i class="fa fa-caret-down"></i></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</ui-gmap-windows>
+	</ui-gmap-markers>
 </ui-gmap-google-map>
 <div drawer></drawer>
 

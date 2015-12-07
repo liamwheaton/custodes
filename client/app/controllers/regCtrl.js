@@ -1,6 +1,6 @@
 angular.module('app.controllers')
 
-.controller('regCtrl', function($scope, $rootScope, $location, AuthenticationService) {
+.controller('regCtrl', function($scope, $rootScope, $location, $http, AuthenticationService) {
 
 	$scope.pageClass = 'page-reg';
 
@@ -8,9 +8,9 @@ angular.module('app.controllers')
 
 	$scope.signUp = function() {
 
-		AuthenticationService.SignUp($scope.username, $scope.password, function(response) {
+		AuthenticationService.SignUp($scope.username, $scope.email, $scope.password, function(response) {
 			if (response.success) {
-				AuthenticationService.SetCredentials($scope.username, $scope.password);
+				AuthenticationService.SetCredentials($scope.username, $scope.email, $scope.password);
 				$location.path('/map');
 			} else {
 				$scope.error = response.message;

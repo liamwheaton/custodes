@@ -1,13 +1,15 @@
 var mongoose = require('mongoose');
 
-// Create schema
 var PinSchema = new mongoose.Schema({
-	userId: String,
-	title: String,
-	id: Number,
-	latitude: Number,
-	longitude: Number,
-	message: String
+
+	id: { type: Number },
+	userId: { type: String },
+	username: { type: String},
+	latitude: { type: Number },
+	longitude: { type: Number},
+	// location: {type: [Number], required: true},
+	voteUp: { type: Number },
+	voteDown: { type: Number }
 });
 
 //Add userId to pin

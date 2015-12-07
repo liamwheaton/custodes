@@ -1,13 +1,13 @@
 <div class="wrapper">
 	
-	<form class="form-container" name="formContainer" ng-submit="signUp()" role="form" novalidate>
+	<form class="form-container" name="formContainer" ng-submit="signUp()" ng-click="clicked()" role="form" novalidate>
 
 		<div class="form-row">
-			<input type="text" name="username" placeholder="Username" ng-model="username" ng-minlength="3" ng-maxlength="16" required >
+			<input type="text" name="username" placeholder="Username" ng-model="username" ng-minlength="3" ng-maxlength="16" username-validate ng-model-options="{ updateOn: 'blur' }" required>
 		</div>
 
 		<div class="form-row">
-			<input type="text" name="email" placeholder="E-mail" ng-model="email" required>
+			<input type="email" name="email" placeholder="E-mail" ng-model="email"  required>
 		</div>
 
 		<div class="form-row">
@@ -15,30 +15,48 @@
 		</div>
 
 		<div class="form-row">
-			<input type="password" name="passwordconfirm" value="" placeholder="Confirm password" ng-model="passwordconfirm" required>
+			<input type="password" name="passwordConfirm" placeholder="Confirm password" ng-model="passwordConfirm" compare-to="password" required>
 		</div>
 		
 		<div class="terms">
-			<input type="checkbox">
+			<input type="checkbox" name="terms" ng-model="terms" required>
 			<label for="">Accept</label>
 			<a href="#">Terms and Conditions</a>
 		</div>
 		
 		<div class="form-validation">
-			<button type="submit" class="btn">Sign up</button>
-			<div ng-class="{ view: formContainer.password.$invalid }" class="error" ng-messages="formContainer.password.$error" ng-show="formContainer.password.$touched">
+
+			<button type="submit" class="btn" ng-disabled="formContaier.$invalid" >Sign up</button>
+
+			<div class="error" ng-messages="formContainer.terms.$error" ng-show="formContainer.passwordConfirm.$touched">
+				<div ng-message="required">Please accept terms</div>
+			</div>
+
+			<div class="error" ng-messages="formContainer.passwordConfirm.$error" ng-show="formContainer.passwordConfirm.$touched">
+				<div ng-message="required">Please confirm password</div>
+				<div ng-message="compareTo">Password does not match</div>
+			</div>
+
+			<div class="error" ng-messages="formContainer.password.$error" ng-show="formContainer.password.$touched">
 				<div ng-message="required">Password required</div>
 				<div ng-message="minlength">Min 8 characters required</div>
 			</div>
-			<div ng-class="{ view: formContainer.email.$invalid }" class="error" ng-messages="formContainer.email.$error" ng-show="formContainer.email.$touched">
+			
+			<div ng-if="formContainer.$error.email" class="error">Email already in use</div>
+
+			<div class="error" ng-messages="formContainer.email.$error" ng-show="formContainer.email.$touched">
 				<div ng-message="required">Email required</div>
-				<div ng-message="email">Email ivalid</div>
+				<div ng-message="email">Email invalid</div>
 			</div>
-			<div ng-class="{ view: formContainer.username.$invalid }" class="error" ng-messages="formContainer.username.$error" ng-show="formContainer.username.$touched">
+
+			<div ng-if="formContainer.$error.username" class="error">Username already in use</div>
+
+			<div class="error" ng-messages="formContainer.username.$error" ng-show="formContainer.username.$touched">
 				<div ng-message="required">Username required</div>
 				<div ng-message="minlength">3-16 characters required</div>
 				<div ng-message="maxlength">3-16 characters required</div>
 			</div>
+
 		</div>
 
 	</form>

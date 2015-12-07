@@ -27,7 +27,6 @@ angular.module('app.controllers')
 		timeout: 60000
 	}).then(function(position) {
 		$scope.myPosition = position;
-		console.log($scope.myPosition);
 	});
 
 	$geolocation.watchPosition({
@@ -35,19 +34,6 @@ angular.module('app.controllers')
 		maximumAge: 250,
 		enableHighAccuracy: true
 	});
-
-	$scope.Markers = [];
-	
-	$scope.add = function() {
-
-		$scope.Markers.push({
-			latitude: $scope.myPosition.coords.latitude,
-			longitude: $scope.myPosition.coords.longitude,
-			title: 'test',
-			id: new Date().valueOf()
-		});
-       
-    };
 
 	$scope.$watch('myPosition.coords', function (newValue, oldValue){
 
@@ -58,5 +44,60 @@ angular.module('app.controllers')
 			},
 			zoom: 16
 		};
-	});	
+	});
+
+	// Add marker function
+
+	$scope.Markers = [];
+
+	$scope.add = function() {
+
+		var pinData = {
+			id: Math.random(),
+			username: $rootScope.globals.currentUser.username,
+			latitude: $scope.myPosition.coords.latitude, 
+			longitude: $scope.myPosition.coords.longitude
+			// location: [$scope.myPosition.coords.longitude, $scope.myPosition.coords.latitude]
+		};
+
+		console.log(pinData);
+
+		PinService.Add( pinData, function(response) {
+				if(response.success) {
+					
+				} else {
+					$scope.error = response.message;
+				}
+		});
+
+		$scope.Markers.push({
+			latitude: $scope.myPosition.coords.latitude,
+			longitude: $scope.myPosition.coords.longitude,
+			username: $rootScope.globals.currentUser.username,
+			id: Math.random()
+		});
+
+       console.log($scope);
+    };
+    
+    // Open window function
+
+    $scope.onClick = function(marker, eventName, model) {
+    	model.show = !model.show;
+    };
+
+	// Recenter function
+
+	$scope.recenter = function() {
+		$scope.$watch('myPosition.coords', function (newValue, oldValue){
+
+			$scope.map = {
+				center: {
+					latitude: newValue.latitude,
+					longitude: newValue.longitude
+				},
+				zoom: 16
+			};
+		});
+	};
 });

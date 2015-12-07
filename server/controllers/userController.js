@@ -1,5 +1,3 @@
-// var restful = require('node-restful');
-
 var User = require('../models/user.js');
 
 // GET users
@@ -13,28 +11,60 @@ exports.getUsers = function(req, res) {
 	});
 };
 
+// Get user by username
+
+exports.getUserByUsername = function(req, res) {
+	User.findOne({
+		username: req.params.username
+	}, function(err, user) {
+		if (err)
+			res.send(err);
+
+		res.json(user);
+	});
+};
+
+// exports.getUserByEmail = function(req, res) {
+// 	User.findOne({
+// 		email: req.params.email
+// 	}, function(err, user) {
+// 		if (err)
+// 			res.send(err);
+
+// 		res.json(user);
+// 	});
+// };
 
 // POST users
 
 exports.postUsers = function(req, res) {
 	
-	if(!req.body.username || !req.body.password) {
-		res.json({ message: 'No username or password - Error processing request' });
+	if(!req.body.username || !req.body.email || !req.body.password) {
+		res.json({ message: 'Error processing request' });
 		return;
 	} 
 	var user = new User({
 		username: req.body.username,
+		email: req.body.email,
 		password: req.body.password
 	});
 
 	user.save(function(err) {
 		if(err) {
-			res.json({ message: 'Save error - Failed to create account' });
+			res.json({ message: 'Error saving' });
 			return;
 		}
 		res.json({ success: 'Account created' });
 	});
 };
+
+// exports.postUsername = function(req, res) {
+// 	 if(req) {
+// 	 	res.json({
+// 	 		message: 'User already exists'
+// 	 	});
+// 	 }
+// };
 
 // Auth user
 
@@ -62,27 +92,3 @@ exports.authenticateUser = function(req, res) {
 		});
 	});
 };
-
-
-
-
-
-//NodeRestful
-
-// module.exports = function(app, route) {
-
-// 	// Add REST
-// 	var rest = restful.model(
-// 		'user',
-// 		app.models.user
-// 		).methods(['get', 'put', 'post', 'delete']);
-
-// 	// Register endpoint
-// 	rest.register(app, route);
-
-// 	// Return middleware
-// 	return function(req, res, next) {
-// 		next();
-// 	};
-
-// };

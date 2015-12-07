@@ -14,7 +14,6 @@ angular.module('app', [
 	'ngResource',
 	'ngMessages',
 	'ngSanitize',
-	'restangular',
 	'uiGmapgoogle-maps',
 	'ngGeolocation',
 
@@ -50,7 +49,6 @@ angular.module('app', [
 
 angular.element(document).ready(function() {
 	angular.bootstrap(document, ['app']);
-
 });
 
 

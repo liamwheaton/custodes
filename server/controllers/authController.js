@@ -6,14 +6,14 @@ var User = require('../models/user.js');
 
 passport.use(new BasicStrategy(
 	function(username, password, next) {
-		User.findOne({ username: username}, function (err, user){ //Is this the mongo User ref?
+		User.findOne({ username: username}, function (err, user) { 
 			if (err) { return next(err); }
 
 			// No user found in database
 			if(!user) { return next(null, false); }
 
 			// Verify password
-			user.verifyPassword(password, function(err, isMatch){
+			user.verifyPassword(password, function(err, isMatch) {
 				if(err) { return next(err); }
 
 				// If password doesn't match do not return next

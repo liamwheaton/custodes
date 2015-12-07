@@ -21,9 +21,9 @@ angular.module('app.services')
            });
     };
 
-    service.SignUp = function(username, password, callback) {
+    service.SignUp = function(username, email, password, callback) {
 
-        $http.post('/api/users', { username: username, password: password })
+        $http.post('/api/users', { username: username, email: email, password: password })
             .success(function(response) {
                 callback(response);
             })

@@ -7,38 +7,36 @@ var mongoose = require('../node_modules/mongoose');
 
 exports.postPins = function(req, res) {
 
-    var pin = new Pin();
-
-    pin.latitude = req.body.latitude;
-    pin.longitude = req.body.longitude;
-    pin.message = req.body.message;
-    pin.userId = req.user._id;
-
-    if(!req.body.longitude || !req.body.latitude){
+    if(!req.body.latitude || !req.body.latitude) {
         res.json({ message: 'Error processing request' });
         return;
     }
 
-    pin.save(function(err){
-        if(err){
-            res.send(err); 
+    var pin = new Pin({
+        id: req.body.id,
+        username: req.body.username,
+        latitude: req.body.latitude,
+        longitude: req.body.longitude
+    });
+
+    pin.save(function(err) {
+        if(err) {
+            res.json({ message: 'Error saving' });
             return;
         }
-        res.json({ success: 'Pin created' });
+        res.json({ success: 'Pin saved' });
     });
 };
 
 // GET pins
 
 exports.getPins = function(req, res) {
-    Pin.find(function(err, pins) {
+    Pin.find({}, function(err, pins) {
         if (err)
             res.send(err);
         res.json(pins);
     });
 };
-
-
 
 
 // DELETE Pins
@@ -52,11 +50,6 @@ exports.getPins = function(req, res) {
 // exports.putPin = function(req, res) {
 //  // update the votecount?
 // };
-
-
-
-
-
 
 
 
@@ -160,24 +153,3 @@ exports.getPins = function(req, res) {
 // };
 
 
-
-
-
-// noderestful
-// module.exports = function(app, route) {
-
-// 	// Add REST
-// 	var rest = restful.model(
-// 		'pin',
-// 		app.models.pin
-// 		).methods(['get', 'put', 'post', 'delete']);
-
-// 	// Register endpoint
-// 	rest.register(app, route);
-
-// 	// Return middleware
-// 	return function(req, res, next) {
-// 		next();
-// 	};
-
-// };
